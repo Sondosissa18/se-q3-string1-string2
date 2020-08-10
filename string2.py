@@ -4,7 +4,7 @@ Kenzie assignment: String2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Sondos Issa , with help from john "
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -23,22 +23,32 @@ __author__ = "???"
 
 
 def verbing(s):
-    # your code here
-    return
+    if len(s) < 3:
+        return s
+    elif s.endswith('ing'):
+        return s + 'ly'
+    else:
+        return s + 'ing'
 
-
-# E. not_bad
-# Given a string, find the first occurrence of the substrings
-# 'not' and 'bad'. If the 'bad' follows the 'not', replace
-# the whole 'not'...'bad' substring with 'good'.
-# Return the resulting string.
-# Example:
-#   'This dinner is not that bad!' -> 'This dinner is good!'
+    # E. not_bad
+    # Given a string, find the first occurrence of the substrings
+    # 'not' and 'bad'. If the 'bad' follows the 'not', replace
+    # the whole 'not'...'bad' substring with 'good'.
+    # Return the resulting string.
+    # Example:
+    #   'This dinner is not that bad!' -> 'This dinner is good!'
 
 
 def not_bad(s):
-    # your code here
-    return
+    find_not = s.find('not')
+    find_bad = s.find('bad')
+
+    if find_bad > find_not:
+        result = s.replace(s[find_not:find_bad + 3], 'good')
+
+        return result
+    else:
+        return s
 
 
 # F. front_back
@@ -52,12 +62,29 @@ def not_bad(s):
 
 
 def front_back(a, b):
-    # your code here
-    return
+    length_a = len(a)
+    length_b = len(b)
+
+    if length_a % 2 == 0:
+        a_split = length_a // 2
+    else:
+        a_split = (length_a // 2) + 1
+
+    if length_b % 2 == 0:
+        b_split = length_b // 2
+    else:
+        b_split = (length_b // 2) + 1
+
+    a_front = a[:a_split]
+    b_front = b[:b_split]
+    a_back = a[a_split:]
+    b_back = b[b_split:]
+    return a_front + b_front + a_back + b_back
+
+    # Provided simple test() function used in main() to print
+    # what each function returns vs. what it's supposed to return.
 
 
-# Provided simple test() function used in main() to print
-# what each function returns vs. what it's supposed to return.
 def test(got, expected):
     if got == expected:
         prefix = ' OK '
